@@ -2,7 +2,7 @@ from requests import get
 from bs4 import BeautifulSoup
 
 
-def nomeAção(código_da_ação ='MGLU3'):
+def nomeAção(código_da_ação ='BOVA11'):
     return f"https://www.google.com/finance/quote/{código_da_ação}:BVMF?sa=X&ved=2ahUKEwjk-cXbk8v3AhW7LrkGHayPCyUQ3ecFegQIGxAY"
 
 
