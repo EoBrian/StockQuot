@@ -1,7 +1,7 @@
 # Cotação de Ações
  Programa feito utilizando a tecnologia Python! E algumas bibliotecas do próprio, tais como: PySimpleGUI, requests e BS4(Bealtiful Soup 4)!
 
- Fiz este projeto em paralelo a um curso de programação python, para poder aperfeiçoar meus conhecimentos na limguagem!
+ Fiz este projeto em paralelo a um curso de programação python, para poder aperfeiçoar meus conhecimentos na linguagem!
 
  Com a biblioteca:
  PySimpleGUI - fiz a interface gráfica
