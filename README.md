@@ -3,7 +3,9 @@
 
  Fiz este projeto em paralelo a um curso de programação python, para poder aperfeiçoar meus conhecimentos na limguagem!
 
- com o:
+ Com a biblioteca:
  PySimpleGUI - fiz a interface gráfica
- requests - fiz o requerimento na página web
+ 
+ Requests - fiz o requerimento na página web
+ 
  BS4 - fiz o parsing da pagina (pega a página em html e a transforma em objetos no python)
