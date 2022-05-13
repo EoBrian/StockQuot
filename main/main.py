@@ -11,23 +11,28 @@ layout = [
 
     #AREA DO BOTÃO, INPUT E TEXTO
     [sg.Text('DIGITE O CÓDIGO DA AÇÃO:',font='Arial 15', background_color='MediumOrchid'),
-     sg.Input(str(' ').strip().upper(), key='-CODIGO-')],
+     sg.Input(str(' ').strip().upper(), key='-CODIGO-')], 
     
     #BOTÃO PARA MOSTRA A COTAÇÃO
-    [sg.Button('MOSTRAR COTAÇÃO', key='-SHOW-', expand_x= True)],
+    [sg.Button('MOSTRAR COTAÇÃO', key='-SHOW-', expand_x= True)],     
+   
+    #TEXTO ONDE VAI APARECER O NOME DA EMPRESA E A COTAÇÃO 
+    [sg.VPush('blueviolet')],
 
+    [sg.Text('',key='-EMPRESA-',font='Arial 20',background_color='blueviolet', justification='center',expand_x=1)],   
+    [sg.Text('',key='-COTAÇÃO-',font='Arial 25',background_color='blueviolet',justification='center',expand_x=1)],
+    
+    [sg.VPush('blueviolet')],
+   
     #COTAÇÃO FIXA DO DOLLAR E BITICOIN
+    [sg.Push(background_color='black')],
+
     [sg.Text(str('US$:'),background_color='red'), sg.Text(str(DOLLAR['AÇÃO']['COTAÇÃO']),background_color='blueviolet',expand_x=1),     
     sg.Text(str('€uro:'),background_color='red'), sg.Text(str(EURO['AÇÃO']['COTAÇÃO']),background_color='blueviolet',expand_x=1),
     sg.Text(str('ETH:'),background_color='red'), sg.Text(str(ETHERIUM['AÇÃO']['COTAÇÃO']),background_color='blueviolet',expand_x=1),
     sg.Text(str('BTC:'),background_color='red'),sg.Text(str(BITCOIN['AÇÃO']['COTAÇÃO']),background_color='blueviolet',expand_x=1)], 
-    
-    #TEXTO ONDE VAI APARECER O NOME DA EMPRESA E A COTAÇÃO
-    [],
-    [sg.Text('',key='-EMPRESA-',font='Arial 15',background_color='blueviolet')],   
-    [sg.Text('',key='-COTAÇÃO-',expand_x=1,font='Arial 25',background_color='blueviolet')],
-    
-    [sg.VPush('blueviolet')]
+
+    [sg.Push(background_color='black')],
 ]
 
 WINDOW = sg.Window('COTAÇÕES', layout= layout, size=(500,280), background_color='blueviolet',button_color='black')
