@@ -5,6 +5,7 @@ import PySimpleGUI as sg
 BITCOIN = apps.pegandoCotaçao('https://www.google.com/finance/quote/BTC-BRL?sa=X&ved=2ahUKEwjIh6nDpM73AhWUFrkGHZDOAKYQ-fUHegQIAhAX&window=MAX')
 DOLLAR = apps.pegandoCotaçao('https://www.google.com/finance/quote/USD-BRL')
 EURO = apps.pegandoCotaçao('https://www.google.com/finance/quote/EUR-BRL')
+ETHERIUM = apps.pegandoCotaçao('https://www.google.com/finance/quote/ETH-BRL')
 
 layout = [
 
@@ -14,21 +15,17 @@ layout = [
     
     #BOTÃO PARA MOSTRA A COTAÇÃO
     [sg.Button('MOSTRAR COTAÇÃO', key='-SHOW-', expand_x= True)],
-    [sg.VPush('blueviolet')],
-
-    #TEXTO ONDE VAI APARECER O NOME DA EMPRESA E A COTAÇÃO
-    [sg.Text('',key='-EMPRESA-',font='Arial 15',background_color='blueviolet')],   
-    [sg.Text('',key='-COTAÇÃO-',expand_x=1,font='Arial 25',background_color='blueviolet')],
 
     #COTAÇÃO FIXA DO DOLLAR E BITICOIN
-    [sg.Text(str('DOLLAR:  '), background_color='blueviolet', justification='right', expand_x=True),
-        sg.Text(str(DOLLAR['AÇÃO']['COTAÇÃO']), background_color='blueviolet',justification='right')],
+    [sg.Text(str('US$:'),background_color='red'), sg.Text(str(DOLLAR['AÇÃO']['COTAÇÃO']),background_color='blueviolet',expand_x=1),     
+    sg.Text(str('€uro:'),background_color='red'), sg.Text(str(EURO['AÇÃO']['COTAÇÃO']),background_color='blueviolet',expand_x=1),
+    sg.Text(str('ETH:'),background_color='red'), sg.Text(str(ETHERIUM['AÇÃO']['COTAÇÃO']),background_color='blueviolet',expand_x=1),
+    sg.Text(str('BTC:'),background_color='red'),sg.Text(str(BITCOIN['AÇÃO']['COTAÇÃO']),background_color='blueviolet',expand_x=1)], 
     
-    [sg.Text(str('BITCOIN:'),background_color='blueviolet',justification='right',expand_x=True),
-        sg.Text(str(BITCOIN['AÇÃO']['COTAÇÃO'][0:7]), background_color='blueviolet')],  
-    
-    [sg.Text(str('EURO   :  '),background_color='blueviolet',justification='right',expand_x=True),
-        sg.Text(str(EURO['AÇÃO']['COTAÇÃO'][0:7]), background_color='blueviolet',justification='right')], 
+    #TEXTO ONDE VAI APARECER O NOME DA EMPRESA E A COTAÇÃO
+    [],
+    [sg.Text('',key='-EMPRESA-',font='Arial 15',background_color='blueviolet')],   
+    [sg.Text('',key='-COTAÇÃO-',expand_x=1,font='Arial 25',background_color='blueviolet')],
     
     [sg.VPush('blueviolet')]
 ]
