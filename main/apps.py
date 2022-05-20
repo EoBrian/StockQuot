@@ -25,22 +25,52 @@ def parsingHTML(text):
         nome_empresa = soup.find('div', class_='zzDege').string
         cotação = soup.find('div', class_='YMlKec fxKbKc').string
 
+        informações = soup.find_all('div', class_='P6K39c')
+        ceo = informações[9].string
+        variação_hoje = informações[1].string
+        variação_ano = informações[2].string
+        indicePL = informações[5].string
+
         dicionario['AÇÃO'] = {
             'EMPRESA': nome_empresa,
-            'COTAÇÃO': cotação
+            'COTAÇÃO': cotação,
+            'CEO': ceo,
+            'VAR-HOJE': variação_hoje,
+            'VAR-ANO': variação_ano,
+            'PL': indicePL,
         }
 
-    
-    except:
-        print('')
+        return dicionario
 
- 
-    return dicionario
+    except:
+        exit()
+
+
+def parsingMOEDAS(text):
+    dicionario = {}
+
+    try:
+        soup = BeautifulSoup(text, 'html.parser')
+        nome_empresa = soup.find('div', class_='zzDege').string
+        cotação = soup.find('div', class_='YMlKec fxKbKc').string
+
+        dicionario['MOEDA'] = {
+            'EMPRESA': nome_empresa,
+            'COTAÇÃO': cotação,
+        }
+
+        return dicionario
+
+    except:
+        exit()
 
 
 def pegandoCotaçao(link):
     requisição = requisiçãoWeb(link)
-    parsing = parsingHTML(requisição)
-    return parsing
-
-
+    
+    try:
+        parsing = parsingHTML(requisição)
+        return parsing
+    except:
+        parsing2 = parsingMOEDAS(requisição)
+        return parsing2

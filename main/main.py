@@ -18,7 +18,7 @@ layout = [
    
     #TEXTO ONDE VAI APARECER O NOME DA EMPRESA E A COTAÇÃO 
     [sg.VPush('blueviolet')],
-
+    
     [sg.Text('',key='-EMPRESA-',font='Arial 20',background_color='blueviolet', justification='center',expand_x=1)],   
     [sg.Text('',key='-COTAÇÃO-',font='Arial 25',background_color='blueviolet',justification='center',expand_x=1)],
     
@@ -27,10 +27,10 @@ layout = [
     #COTAÇÃO FIXA DO DOLLAR E BITICOIN
     [sg.Push(background_color='black')],
 
-    [sg.Text(str('US$:'),background_color='red'), sg.Text(str(DOLLAR['AÇÃO']['COTAÇÃO']),background_color='blueviolet',expand_x=1),     
-    sg.Text(str('€uro:'),background_color='red'), sg.Text(str(EURO['AÇÃO']['COTAÇÃO']),background_color='blueviolet',expand_x=1),
-    sg.Text(str('ETH:'),background_color='red'), sg.Text(str(ETHERIUM['AÇÃO']['COTAÇÃO']),background_color='blueviolet',expand_x=1),
-    sg.Text(str('BTC:'),background_color='red'),sg.Text(str(BITCOIN['AÇÃO']['COTAÇÃO']),background_color='blueviolet',expand_x=1)], 
+    [sg.Text(str('US$:'),background_color='red'),sg.Text(str(DOLLAR['MOEDA']['COTAÇÃO']),background_color='blueviolet',expand_x=1),
+     sg.Text(str('€uro:'),background_color='red'),sg.Text(str(EURO['MOEDA']['COTAÇÃO']),background_color='blueviolet',expand_x=1),
+     sg.Text(str('ETH:'),background_color='red'),sg.Text(str(ETHERIUM['MOEDA']['COTAÇÃO']),background_color='blueviolet',expand_x=1),
+     sg.Text(str('BTC:'),background_color='red'),sg.Text(str(BITCOIN['MOEDA']['COTAÇÃO']),background_color='blueviolet',expand_x=1)], 
 
     [sg.Push(background_color='black')],
 ]
