@@ -19,8 +19,15 @@ layout = [
     #TEXTO ONDE VAI APARECER O NOME DA EMPRESA E A COTAÇÃO 
     [sg.VPush('blueviolet')],
     
-    [sg.Text('',key='-EMPRESA-',font='Arial 20',background_color='blueviolet', justification='center',expand_x=1)],   
-    [sg.Text('',key='-COTAÇÃO-',font='Arial 25',background_color='blueviolet',justification='center',expand_x=1)],
+    [sg.Text('',key='-EMPRESA-',font='Arial 14',background_color='blueviolet',expand_x=1),
+
+        sg.Text('CEO:',visible=False,justification='right', expand_x=1,key='1',background_color='blueviolet'), sg.Text('', key='-CEO-',visible=False,background_color='black')],
+        [sg.Text('Váriação no dia:',visible=False,justification='right', expand_x=1,key='2',background_color='blueviolet'), sg.Text('', key='-VAR-HOJE-',visible=False,background_color='black')], 
+
+    [sg.Text('',key='-COTAÇÃO-',font='Arial 15',background_color='blueviolet',expand_x=1),
+
+        sg.Text('Váriação no ano:',visible=False,justification='right', expand_x=1, key='3',background_color='blueviolet'), sg.Text('', key='-VAR-ANO-',visible=False,background_color='black')],
+        [sg.Text('P/L:',visible=False,justification='right', expand_x=1,key='4',background_color='blueviolet'),sg.Text('', key='-PL-',visible=False,background_color='black')],
     
     [sg.VPush('blueviolet')],
    
@@ -35,7 +42,7 @@ layout = [
     [sg.Push(background_color='black')],
 ]
 
-WINDOW = sg.Window('COTAÇÕES', layout= layout, size=(500,280), background_color='blueviolet',button_color='black')
+WINDOW = sg.Window('COTAÇÕES', layout= layout, size=(600,300), background_color='blueviolet',button_color='black')
 
 while True:
     event, value = WINDOW.read()
@@ -50,10 +57,24 @@ while True:
             parsing = apps.parsingHTML(buscando_ação)
 
             WINDOW['-EMPRESA-'].update(parsing['AÇÃO']['EMPRESA'])
-            WINDOW['-COTAÇÃO-'].update(parsing['AÇÃO']['COTAÇÃO'])         
+            WINDOW['-COTAÇÃO-'].update(parsing['AÇÃO']['COTAÇÃO'])
+           
+            for contador in range(1,5):
+                WINDOW[f'{contador}'].update(visible=True) 
+
+            WINDOW['-CEO-'].update(parsing['AÇÃO']['CEO'],visible=True)     
+            WINDOW['-VAR-HOJE-'].update(parsing['AÇÃO']['VAR-HOJE'],visible=True)
+            WINDOW['-VAR-ANO-'].update(parsing['AÇÃO']['VAR-ANO'],visible=True)
+            WINDOW['-PL-'].update(parsing['AÇÃO']['PL'],visible=True)
         
         except:
-            WINDOW['-EMPRESA-'].update('É PRECISO DIGITAR\nALGO VÁLIDO!')
+            for contador in range(1,5):
+                WINDOW[f'{contador}'].update(visible=False)
+            WINDOW['-EMPRESA-'].update('É PRECISO DIGITAR ALGO VÁLIDO!')
             WINDOW['-COTAÇÃO-'].update('')
+            WINDOW['-PL-'].update('')
+            WINDOW['-VAR-ANO-'].update('')
+            WINDOW['-VAR-HOJE-'].update('')
+            WINDOW['-CEO-'].update('')
 
 WINDOW.close()
